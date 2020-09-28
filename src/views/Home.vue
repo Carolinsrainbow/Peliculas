@@ -1,18 +1,37 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- Buscador -->
+    <input
+      type="text"
+      placeholder="Ingresa una película"
+      v-model="peliculaBuscada"
+    />
+    <button @click="buscar">Buscar</button>
+
+    <Encontradas></Encontradas>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Encontradas from "@/components/Encontradas.vue";
+import { mapActions } from "vuex";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
-  }
-}
+    Encontradas,
+  },
+  data() {
+    return {
+      peliculaBuscada: "",
+    };
+  },
+  methods: {
+    ...mapActions(["traerPeliculas"]),
+    buscar() {
+      this.traerPeliculas(this.peliculaBuscada);
+    },
+  },
+};
 </script>
