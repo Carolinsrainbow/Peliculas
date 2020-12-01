@@ -1,4 +1,4 @@
-# proyectoch
+# Proyecto Películas 
 
 ## Project setup
 ```
